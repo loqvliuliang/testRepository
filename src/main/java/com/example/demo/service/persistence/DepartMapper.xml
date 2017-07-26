@@ -1,0 +1,48 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.service.persistence.DepartmentMapper">
+
+    <select id="searchDepartment" parameterType="String" resultType="com.example.demo.service.domain.Department">
+        SELECT id,name,code,status,createDate,AuthenticationMethod FROM alt_department WHERE name  LIKE #{name}
+    </select>
+
+
+    <select id="getDepartment" resultType="com.example.demo.service.domain.Department" parameterType="String">
+         SELECT id,name,code,status,createDate,AuthenticationMethod FROM alt_department WHERE name  LIKE #{name}
+    </select>
+
+    <select id="searcdAllDepartment">
+
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <insert id="insertDept" parameterType="com.example.demo.service.domain.Department">
+
+        INSERT INTO
+        alt_department (id,name,code,status,createDate)
+        VALUES
+        (#{id},#{name},#{code},#{status},#{createDate});
+    </insert>
+
+    <update id="updateDeptById" parameterType="com.example.demo.service.domain.Department">
+        UPDATE alt_department SET name=#{name},code=#{code},status=#{status},status=#{status} WHERE id = #{id};
+    </update>
+
+    <delete id="deleteDeptById" parameterType="java.lang.Long">
+       DELETE FROM alt_department WHERE id=#{id}
+    </delete>
+
+</mapper>
